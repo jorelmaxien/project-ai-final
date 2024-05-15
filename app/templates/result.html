@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Generer le Prompt</h1>
+    <p>{{ prompt }}</p>
+    <h1>Modifier l'Image</h1>
+    <img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Result Image">
+    <a href="{{ url_for('home') }}">Télécharger une autre image</a>
+</body>
+</html>

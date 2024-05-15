@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Télécharger une image et entrer le Prompt</h1>
+    <form action="{{ url_for('main.upload_file') }}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="file">Choisir une image:</label>
+            <input type="file" name="file" id="file" required>
+        </div>
+        <div>
+            <label for="prompt">Entrer votre prompt:</label>
+            <input type="text" name="prompt" id="prompt" placeholder="Entrer votre prompt" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
