@@ -20,7 +20,7 @@ def generate_prompt(prompt):
         ],
         max_tokens=50
     )
-    return response.choices[0].message['content'].strip()
+    return response.choices[0].message.content.strip()
 
 def analyze_image(image_path):
     subscription_key = current_app.config['AZURE_SUBSCRIPTION_KEY']
