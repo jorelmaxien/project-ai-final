@@ -4,15 +4,23 @@ import os
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from msrest.authentication import CognitiveServicesCredentials
 from flask import current_app
+from app import config
+
+# Configuration de l'API OpenAI
+openai.api_key = config.Config.OPENAI_API_KEY
+chatgpt_model_name = "gpt-3.5-turbo" 
+
 
 def generate_prompt(prompt):
-    openai.api_key = current_app.config['OPENAI_API_KEY']
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
+    response = openai.chat.completions.create(
+        model=chatgpt_model_name,
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt},
+        ],
         max_tokens=50
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message['content'].strip()
 
 def analyze_image(image_path):
     subscription_key = current_app.config['AZURE_SUBSCRIPTION_KEY']

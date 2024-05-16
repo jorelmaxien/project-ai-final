@@ -1,4 +1,5 @@
 Flask
+python-dotenv
 azure-cognitiveservices-vision-computervision
 openai
-requests
+msrest
